@@ -1,0 +1,26 @@
+[application]
+
+[web.app]
+
+# HTML title tag content
+title = "errday"
+publisher = "MutabieCanadaInc"
+icon = ["assets/icon.png"]
+copyright = "© 2026 Mutabie Canada Inc."
+category = "Productivity"
+short_description = "Errday is your daily task manager."
+
+# include `assets` in web platform
+[web.resource]
+
+# Additional CSS style files
+style = []
+
+# Additional JavaScript files
+script = []
+
+[web.resource.dev]
+
+# Javascript code file
+# serve: [dev-server] only
+script = []
