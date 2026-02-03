@@ -11,8 +11,8 @@ To learn more, please find the rest of the documentation in the docs folder. The
 ```
 docs/
     |
-    -- about.md
-    -- <INSERT NAME>.md
+    |- about.md
+    L <INSERT NAME>.md
 ```
 
 # How will I make this app?
