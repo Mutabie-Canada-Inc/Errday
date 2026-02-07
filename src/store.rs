@@ -71,6 +71,7 @@ impl AppState {
         self.save_tasks();
     }
 
+    #[allow(dead_code)]
     pub fn toggle_task_status(&self, id: uuid::Uuid) {
         let mut tasks_sig = self.tasks;
         let mut tasks = tasks_sig.write();
@@ -88,6 +89,16 @@ impl AppState {
         let mut tasks_sig = self.tasks;
         let mut tasks = tasks_sig.write();
         tasks.retain(|t| t.id != id);
+        drop(tasks);
+        self.save_tasks();
+    }
+    pub fn update_task_schedule(&self, id: uuid::Uuid, start: Option<chrono::DateTime<chrono::Local>>, end: Option<chrono::DateTime<chrono::Local>>) {
+        let mut tasks_sig = self.tasks;
+        let mut tasks = tasks_sig.write();
+        if let Some(task) = tasks.iter_mut().find(|t| t.id == id) {
+            task.scheduled_start = start;
+            task.scheduled_end = end;
+        }
         drop(tasks);
         self.save_tasks();
     }

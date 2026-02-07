@@ -7,20 +7,20 @@ pub fn Inbox() -> Element {
     let mut input_val = use_signal(|| "".to_string());
 
     rsx! {
-        div { class: "flex-1 h-full p-12 overflow-y-auto",
-            div { class: "max-w-4xl mx-auto space-y-12",
+        div { class: "flex-1 h-full p-8 overflow-y-auto",
+            div { class: "w-full max-w-6xl mx-auto space-y-8",
                 // Header
-                div { class: "border-b border-gray-800 pb-8",
-                    h1 { class: "text-5xl font-bold mb-2 text-white font-sans tracking-tight", "MISSION CONTROL" }
-                    h2 { class: "text-2xl font-mono text-neon-cyan/80 tracking-widest", "BRAIN DUMP // CAPTURE" }
+                div { class: "border-b border-gray-800 pb-6",
+                    h1 { class: "text-4xl font-bold mb-2 text-white font-sans tracking-tight", "MISSION CONTROL" }
+                    h2 { class: "text-xl font-mono text-neon-cyan/80 tracking-widest", "BRAIN DUMP // CAPTURE" }
                 }
                 
                 // Input Area
-                div { class: "flex gap-6 items-end",
+                div { class: "flex gap-4 items-end",
                     div { class: "flex-1 relative group",
                         div { class: "absolute -inset-0.5 bg-gradient-to-r from-neon-cyan/50 to-purple-600/50 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-500" }
                         input {
-                            class: "relative w-full bg-space-900 border border-space-700 rounded-lg p-5 text-xl text-white placeholder-gray-600 focus:border-neon-cyan focus:outline-none focus:ring-1 focus:ring-neon-cyan/50 transition-all font-sans",
+                            class: "relative w-full bg-space-900 border border-space-700 rounded-lg p-3 text-lg text-white placeholder-gray-600 focus:border-neon-cyan focus:outline-none focus:ring-1 focus:ring-neon-cyan/50 transition-all font-sans",
                             placeholder: "What's on your mind?",
                             value: "{input_val}",
                             oninput: move |evt| input_val.set(evt.value()),
@@ -33,7 +33,7 @@ pub fn Inbox() -> Element {
                         }
                     }
                     button {
-                        class: "btn-primary h-[62px]",
+                        class: "btn-primary h-[54px] flex items-center justify-center whitespace-nowrap",
                         onclick: move |_| {
                             if !input_val.read().trim().is_empty() {
                                 app_state.add_task(input_val.read().clone());
