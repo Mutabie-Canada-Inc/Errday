@@ -4,11 +4,18 @@
 
 # HTML title tag content
 title = "Errday"
-publisher = "MutabieCanadaInc"
-icon = ["assets/icon.png"]
-copyright = "© 2026 Mutabie Canada Inc."
-category = "Productivity"
 short_description = "Errday is your daily task manager."
+
+[bundle]
+name = "Errday"
+identifier = "ca.mutabie.errday"
+publisher = "Mutabie Canada Inc."
+icon = ["assets/icon.png"]
+category = "Productivity"
+copyright = "© 2026 Mutabie Canada Inc."
+description = "A minimalist task manager using Eisenhower Matrix and Time Blocking."
+# Include the assets folder in the final bundle
+resources = ["assets"]
 
 # include `assets` in web platform
 [web.resource]
