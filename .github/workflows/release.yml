@@ -8,6 +8,7 @@ on:
 jobs:
   release:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: macos-latest
@@ -16,7 +17,7 @@ jobs:
             target: x86_64-apple-darwin
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-          - os: ubuntu-latest
+          - os: ubuntu-22.04 # Fixed version for stability
             target: x86_64-unknown-linux-gnu
 
     runs-on: ${{ matrix.os }}
@@ -29,24 +30,37 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
+      - name: Cache Dioxus CLI
+        id: cache-dx
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/dx
+          key: ${{ runner.os }}-dioxus-cli-0.6.3
+
       - name: Install Dioxus CLI
-        run: cargo install dioxus-cli --version 0.6.3
+        if: steps.cache-dx.outputs.cache-hit != 'true'
+        run: cargo install dioxus-cli --version 0.6.3 --locked
 
       - name: Install Linux Dependencies
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-22.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
 
       - name: Build Bundle
-        run: dx bundle --release --target ${{ matrix.target }}
+        shell: bash
+        run: |
+          # Use local fix for the 'home' crate issue if not in Cargo.lock
+          cargo update home --precise 0.5.11
+          dx bundle --release --target ${{ matrix.target }}
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target }}-bundle
           path: |
-            target/dx/errday/release/bundle/macos/*.dmg
-            target/dx/errday/release/bundle/msi/*.msi
-            target/dx/errday/release/bundle/deb/*.deb
-            target/dx/errday/release/bundle/appimage/*.AppImage
+            target/dx/errday/bundle/**/bundle/dmg/*.dmg
+            target/dx/errday/bundle/**/bundle/msi/*.msi
+            target/dx/errday/bundle/**/bundle/deb/*.deb
+            target/dx/errday/bundle/**/bundle/appimage/*.AppImage
+            target/dx/errday/bundle/**/bundle/macos/*.app
