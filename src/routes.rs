@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use crate::components::layout::{SidebarLayout, PageNotFound};
-use crate::views::{Inbox, Matrix, Calendar};
+use crate::views::{Inbox, Matrix, Calendar, Credits, Tutorial};
 
 #[derive(Clone, Routable, Debug, PartialEq)]
 pub enum Route {
@@ -11,6 +11,10 @@ pub enum Route {
         Matrix {},
         #[route("/calendar")]
         Calendar {},
+        #[route("/credits")]
+        Credits {},
+        #[route("/tutorial")]
+        Tutorial {},
     #[end_layout]
     #[route("/:..route")]
     PageNotFound {

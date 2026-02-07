@@ -7,45 +7,77 @@ pub fn Inbox() -> Element {
     let mut input_val = use_signal(|| "".to_string());
 
     rsx! {
-        div { class: "flex-1 h-full p-8 overflow-y-auto",
-            h2 { class: "text-3xl font-bold mb-6 text-neon-cyan font-mono", "INBOX // CAPTURE" }
-            
-            div { class: "max-w-2xl mx-auto",
-                div { class: "flex gap-4 mb-8",
-                    input {
-                        class: "flex-1 bg-space-800 border border-space-700 rounded p-4 text-white focus:border-neon-cyan focus:outline-none focus:ring-1 focus:ring-neon-cyan transition-all",
-                        placeholder: "What needs to be done?",
-                        value: "{input_val}",
-                        oninput: move |evt| input_val.set(evt.value()),
-                        onkeydown: move |evt| {
-                            if evt.key() == Key::Enter && !input_val.read().trim().is_empty() {
-                                app_state.add_task(input_val.read().clone());
-                                input_val.set("".to_string());
+        div { class: "flex-1 h-full p-12 overflow-y-auto",
+            div { class: "max-w-4xl mx-auto space-y-12",
+                // Header
+                div { class: "border-b border-gray-800 pb-8",
+                    h1 { class: "text-5xl font-bold mb-2 text-white font-sans tracking-tight", "MISSION CONTROL" }
+                    h2 { class: "text-2xl font-mono text-neon-cyan/80 tracking-widest", "BRAIN DUMP // CAPTURE" }
+                }
+                
+                // Input Area
+                div { class: "flex gap-6 items-end",
+                    div { class: "flex-1 relative group",
+                        div { class: "absolute -inset-0.5 bg-gradient-to-r from-neon-cyan/50 to-purple-600/50 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-500" }
+                        input {
+                            class: "relative w-full bg-space-900 border border-space-700 rounded-lg p-5 text-xl text-white placeholder-gray-600 focus:border-neon-cyan focus:outline-none focus:ring-1 focus:ring-neon-cyan/50 transition-all font-sans",
+                            placeholder: "What's on your mind?",
+                            value: "{input_val}",
+                            oninput: move |evt| input_val.set(evt.value()),
+                            onkeydown: move |evt| {
+                                if evt.key() == Key::Enter && !input_val.read().trim().is_empty() {
+                                    app_state.add_task(input_val.read().clone());
+                                    input_val.set("".to_string());
+                                }
                             }
                         }
                     }
                     button {
-                        class: "bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/50 px-6 rounded hover:bg-neon-cyan/30 transition-colors uppercase font-bold tracking-wide",
+                        class: "btn-primary h-[62px]",
                         onclick: move |_| {
                             if !input_val.read().trim().is_empty() {
                                 app_state.add_task(input_val.read().clone());
                                 input_val.set("".to_string());
                             }
                         },
-                        "Add"
+                        "Capture Task"
                     }
                 }
 
-                div { class: "space-y-3",
-                    for task in app_state.tasks.read().iter().filter(|t| matches!(t.quadrant, crate::models::Quadrant::Unsorted)).cloned() {
-                        div { class: "glass-panel p-4 rounded flex justify-between items-center group",
-                            span { class: "text-lg", "{task.title}" }
-                            div { class: "opacity-0 group-hover:opacity-100 transition-opacity flex gap-2",
-                                button { class: "text-xs px-2 py-1 border border-space-700 rounded hover:border-red-500 hover:text-red-500",
-                                    onclick: move |_| {
-                                        app_state.delete_task(task.id);
-                                    },
-                                    "Delete"
+                // Tasks Table
+                if !app_state.tasks.read().iter().any(|t| matches!(t.quadrant, crate::models::Quadrant::Unsorted)) {
+                    div { class: "text-center py-20 text-gray-600 font-mono border border-dashed border-gray-800 rounded-xl bg-space-800/20",
+                        "// SYSTEM CLEAR - NO PENDING TASKS"
+                    }
+                } else {
+                    div { class: "glass-panel rounded-xl overflow-hidden",
+                        table { class: "data-table",
+                            thead {
+                                tr {
+                                    th { "Task Description" }
+                                    th { class: "w-32 text-right", "Status" }
+                                    th { class: "w-32 text-right", "Actions" }
+                                }
+                            }
+                            tbody {
+                                for task in app_state.tasks.read().iter().filter(|t| matches!(t.quadrant, crate::models::Quadrant::Unsorted)).cloned() {
+                                    tr {
+                                        key: "{task.id}",
+                                        td { 
+                                            class: "text-lg font-medium",
+                                            span { class: "text-neon-cyan mr-3 font-mono", "::" }
+                                            "{task.title}" 
+                                        }
+                                        td { class: "text-right font-mono text-xs text-gray-500", "UNSORTED" }
+                                        td { class: "text-right",
+                                            button { class: "text-xs hover:text-red-500 text-gray-600 transition-colors uppercase tracking-wider font-bold",
+                                                onclick: move |_| {
+                                                    app_state.delete_task(task.id);
+                                                },
+                                                "Delete"
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -31,6 +31,8 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         
-        Router::<Route> {}
+        div { class: "dark bg-space-900 text-gray-100 min-h-screen font-sans selection:bg-neon-cyan selection:text-space-900",
+            Router::<Route> {}
+        }
     }
 }

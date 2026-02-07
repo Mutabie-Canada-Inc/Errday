@@ -28,6 +28,20 @@
     @apply font-mono text-neon-cyan/80 tracking-wider uppercase text-xs;
   }
   .btn-primary {
-    @apply px-4 py-2 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/20 hover:border-neon-cyan transition-all duration-200 active:scale-95 rounded;
+    @apply px-6 py-3 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/20 hover:border-neon-cyan transition-all duration-300 active:scale-95 rounded font-bold tracking-wide uppercase text-sm;
+  }
+  
+  /* Table Styles */
+  .data-table {
+    @apply w-full text-left border-collapse;
+  }
+  .data-table th {
+    @apply p-4 border-b border-space-700 text-gray-400 font-mono text-xs uppercase tracking-wider;
+  }
+  .data-table td {
+    @apply p-4 border-b border-space-700/50 text-gray-200;
+  }
+  .data-table tr:hover td {
+    @apply bg-space-700/30 transition-colors;
   }
 }
