@@ -22,3 +22,10 @@
 - Copied the value out of the read guard first: `let id = *dragged_id.read();`
 - Dropped the read guard (implicitly or explicitly).
 - Then performed the mutable operation: `dragged_id.set(None);`
+
+## 4. Unused Imports and Variables
+**Problem:** Warnings about unused `Task` struct and variables like `week_days` when logic was commented out or imports were overly broad.
+**Context:** `src/views/calendar.rs` and `src/views/matrix.rs`.
+**Solution:**
+- Removed unused imports or prefixed unused variables with `_` (e.g., `_tasks`).
+- Re-enabled logic once compilation blocking errors were resolved.
