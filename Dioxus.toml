@@ -3,7 +3,7 @@
 [web.app]
 
 # HTML title tag content
-title = "errday"
+title = "Errday"
 publisher = "MutabieCanadaInc"
 icon = ["assets/icon.png"]
 copyright = "© 2026 Mutabie Canada Inc."

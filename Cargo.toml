@@ -1,7 +1,7 @@
 [package]
 name = "errday"
 version = "0.1.0"
-authors = ["Edward Naidoo <ceo@mutabie.ca>"]
+authors = ["Mutabie Canada Inc <info@mutabie.ca>"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

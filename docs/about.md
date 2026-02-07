@@ -1,4 +1,4 @@
-# Problem Solving
+# About
 This file will explain more about the app and answer some questions you might have
 
 ## Who is my Audience?
