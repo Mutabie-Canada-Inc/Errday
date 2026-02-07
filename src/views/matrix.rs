@@ -2,14 +2,16 @@ use dioxus::prelude::*;
 use crate::models::Quadrant;
 use crate::store::AppState;
 
+/// THE MATRIX DASHBOARD: Shows the four-quadrant Eisenhower Matrix for task prioritization
 #[component]
 pub fn Matrix() -> Element {
+    // Stage 1: Connect to global app data and prepare a signal to track which task is being dragged
     let _app_state = use_context::<AppState>();
     let dragged_id = use_signal(|| None::<uuid::Uuid>);
 
     rsx! {
         div { class: "flex h-full",
-            // Backlog Sidebar
+            // THE BACKLOG SIDEBAR: Contains all "Unsorted" tasks waiting to be placed in the matrix
             div { class: "w-80 bg-space-900 border-r border-space-700 p-4 flex flex-col h-full",
                 div { class: "mb-4 pb-4 border-b border-space-800 flex justify-between items-center group",
                     div {
@@ -17,6 +19,7 @@ pub fn Matrix() -> Element {
                         p { class: "text-xs text-gray-500 font-mono", "UNSORTED MINDS" }
                     }
                     div { class: "relative group-hover:block hidden",
+                         // Helpful hint for new users
                          InfoBubble { 
                              text: "Tasks captured in Brain Dump appear here. Drag them into a quadrant.",
                              pos_class: "left-0 top-full mt-2"
@@ -25,6 +28,7 @@ pub fn Matrix() -> Element {
                 }
                 
                 div { class: "flex-1 overflow-y-auto space-y-2",
+                   // Backlog is just a specialized 'QuadrantBox' with no title
                    QuadrantBox { 
                        title: "", 
                        quadrant: Quadrant::Unsorted, 
@@ -35,8 +39,9 @@ pub fn Matrix() -> Element {
                 }
             }
 
-            // Matrix Grid
+            // THE MATRIX GRID: A 2x2 grid representing the core prioritization logic
             div { class: "flex-1 p-16 grid grid-cols-2 grid-rows-2 gap-10",
+                // Top-Left: Do First (Urgent & Important)
                 QuadrantBox { 
                     title: "DO FIRST", 
                     subtitle: "URGENT & IMPORTANT", 
@@ -46,6 +51,7 @@ pub fn Matrix() -> Element {
                     info: "Crises, deadlines, and problems. Do these NOW.",
                     bubble_pos: "left-0 top-full mt-3" 
                 }
+                // Top-Right: Schedule (Important, Not Urgent)
                 QuadrantBox { 
                     title: "SCHEDULE", 
                     subtitle: "IMPORTANT, NOT URGENT", 
@@ -55,6 +61,7 @@ pub fn Matrix() -> Element {
                     info: "Planning, prevention, and improvement. Schedule a time for these.",
                     bubble_pos: "left-0 top-full mt-3" 
                 }
+                // Bottom-Left: Delegate (Urgent, Not Important)
                 QuadrantBox { 
                     title: "DELEGATE", 
                     subtitle: "URGENT, NOT IMPORTANT",
@@ -64,6 +71,7 @@ pub fn Matrix() -> Element {
                     info: "Interruptions, some calls/meetings. Delegate if possible.",
                     bubble_pos: "left-0 bottom-full mb-3" 
                 }
+                // Bottom-Right: Delete (Neither)
                 QuadrantBox { 
                     title: "DELETE", 
                     subtitle: "NEITHER",
@@ -78,6 +86,7 @@ pub fn Matrix() -> Element {
     }
 }
 
+/// INFO BUBBLE: A small 'i' icon that shows a help message on hover
 #[component]
 fn InfoBubble(text: &'static str, pos_class: Option<&'static str>) -> Element {
     // Default to displaying below and aligned to the left edge of the icon
@@ -88,6 +97,7 @@ fn InfoBubble(text: &'static str, pos_class: Option<&'static str>) -> Element {
             div { class: "w-8 h-8 shrink-0 rounded-full border border-gray-500 text-gray-400 flex items-center justify-center text-lg font-mono font-bold hover:border-white hover:text-white transition-colors bg-space-900 shadow-lg",
                 "i"
             }
+            // The actual tooltip content
             div { class: "absolute {placement} w-64 bg-space-800 text-gray-200 text-xs p-4 rounded-xl shadow-2xl border border-space-600 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none text-left backdrop-blur-xl z-[9999] tracking-wide leading-relaxed",
                 "{text}"
             }
@@ -95,6 +105,7 @@ fn InfoBubble(text: &'static str, pos_class: Option<&'static str>) -> Element {
     }
 }
 
+/// QUADRANT BOX: A reusable component for each of the four areas + the backlog
 #[component]
 fn QuadrantBox(
     title: &'static str, 
@@ -108,16 +119,17 @@ fn QuadrantBox(
 ) -> Element {
     let app_state = use_context::<AppState>();
     
+    // Track if a task is currently being dragged over this specific box
     let is_drop_target = use_signal(|| false);
 
     let drop_target_class = if is_drop_target() { "bg-space-700/50" } else { "" };
     
+    // Get all tasks matching this quadrant
     let tasks: Vec<crate::models::Task> = app_state.tasks.read().iter()
         .filter(|t| t.quadrant == quadrant)
         .cloned()
         .collect();
 
-    // Conditional styling for backlog vs matrix boxes
     let container_class = if is_backlog.unwrap_or(false) {
         format!("flex flex-col h-full transition-colors {}", drop_target_class)
     } else {
@@ -128,8 +140,9 @@ fn QuadrantBox(
     rsx! {
         div {
             class: "{container_class}",
+            // Handle dragging over: and dropping into this box
             ondragover: move |evt| {
-                evt.prevent_default();
+                evt.prevent_default(); // Required to allow a drop
                 let mut is_drop_target = is_drop_target;
                 is_drop_target.set(true);
             },
@@ -141,13 +154,17 @@ fn QuadrantBox(
                 let mut is_drop_target = is_drop_target;
                 is_drop_target.set(false);
                 let id = *dragged_id.read();
+                // Step 1: Detect which task was dropped
                 if let Some(id) = id {
+                    // Step 2: Update the task's location in global state
                     app_state.update_task_quadrant(id, quadrant.clone());
+                    // Step 3: Reset the drag tracking signal
                     let mut dragged_id = dragged_id;
                     dragged_id.set(None);
                 }
             },
             
+            // Render the header (Only for the four matrix quadrants)
             if !is_backlog.unwrap_or(false) {
                 div { class: "flex justify-between items-start mb-6 border-b border-white/5 pb-4 relative z-20",
                     div {
@@ -162,6 +179,7 @@ fn QuadrantBox(
                 }
             }
             
+            // List the tasks inside this section
             div { class: "flex-1 overflow-y-auto space-y-3 min-h-0 z-10",
                 if tasks.is_empty() {
                     div { class: "h-full flex items-center justify-center text-gray-700 text-sm font-mono italic",
@@ -173,6 +191,7 @@ fn QuadrantBox(
                         key: "{task.id.to_string()}",
                         class: "bg-space-900 border border-space-700 p-4 rounded-lg group cursor-move hover:border-current transition-all shadow-sm relative hover:translate-x-1",
                         draggable: true,
+                        // Update the global 'dragging' signal when the user picks up this task
                         ondragstart: move |_| {
                             let mut dragged_id = dragged_id;
                             dragged_id.set(Some(task.id));

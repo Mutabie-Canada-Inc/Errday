@@ -1,6 +1,6 @@
 [package]
 name = "errday"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["Mutabie Canada Inc <info@mutabie.ca>"]
 edition = "2021"
 
@@ -21,7 +21,15 @@ web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
 mobile = ["dioxus/mobile"]
 
-[profile]
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 1
 
 [profile.wasm-dev]
 inherits = "dev"

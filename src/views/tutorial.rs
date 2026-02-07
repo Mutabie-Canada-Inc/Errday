@@ -1,19 +1,20 @@
 use dioxus::prelude::*;
 use crate::routes::Route;
 
+/// TUTORIAL VIEW: A simple step-by-step guide to help new users understand the workflow
 #[component]
 pub fn Tutorial() -> Element {
     rsx! {
         div { class: "flex-1 h-full p-12 overflow-y-auto",
             div { class: "max-w-4xl mx-auto space-y-12",
-                // Header
+                // PAGE HEADER: Mission identification
                 div { class: "border-b border-gray-800 pb-8 text-center",
-                    h2 { class: "text-4xl font-bold mb-2 text-white font-sans tracking-tight", "Flight Manual" }
+                    h2 { class: "text-4xl font-bold mb-2 text-white font-sans tracking-tight", "Tutorial" }
                     p { class: "text-gray-400 font-mono text-sm", "OPERATIONAL GUIDE // v1.0" }
                 }
 
                 div { class: "grid gap-8",
-                    // Step 1: Capture
+                    // Stage 1: The 'Brain Dump' phase
                     div { class: "glass-panel p-8 rounded-xl border-l-4 border-neon-cyan flex gap-6",
                         div { class: "text-4xl font-mono text-neon-cyan/50 font-bold", "01" }
                         div {
@@ -24,7 +25,7 @@ pub fn Tutorial() -> Element {
                         }
                     }
 
-                    // Step 2: Sort
+                    // Stage 2: The 'Prioritization' phase
                     div { class: "glass-panel p-8 rounded-xl border-l-4 border-neon-purple flex gap-6",
                         div { class: "text-4xl font-mono text-neon-purple/50 font-bold", "02" }
                         div {
@@ -35,7 +36,7 @@ pub fn Tutorial() -> Element {
                         }
                     }
 
-                    // Step 3: Schedule
+                    // Stage 3: The 'Scheduling' phase
                     div { class: "glass-panel p-8 rounded-xl border-l-4 border-neon-green flex gap-6",
                         div { class: "text-4xl font-mono text-neon-green/50 font-bold", "03" }
                         div {
@@ -47,6 +48,7 @@ pub fn Tutorial() -> Element {
                     }
                 }
 
+                // CTA: Call to action to jump back to the main dash
                 div { class: "text-center pt-8",
                     Link { to: Route::Inbox {}, class: "btn-primary inline-flex items-center gap-2",
                         "Start Mission"
