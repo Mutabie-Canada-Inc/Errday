@@ -30,7 +30,7 @@ pub fn Credits() -> Element {
                         div { class: "grid grid-cols-2 gap-8 text-left",
                             div {
                                 h4 { class: "font-mono text-xs text-gray-500 uppercase tracking-widest mb-3", "Version" }
-                                p { class: "text-gray-300", "v1.0.1 (MVP)" }
+                                p { class: "text-gray-300", "v1.0.2 (MVP)" }
                             }
                             div {
                                 h4 { class: "font-mono text-xs text-gray-500 uppercase tracking-widest mb-3", "Stack" }
