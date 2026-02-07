@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-space-900 text-gray-100 font-sans selection:bg-neon-cyan selection:text-space-900;
+  }
+  
+  /* Scrollbar styling for that technical feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-space-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-space-700 rounded-full hover:bg-neon-cyan transition-colors;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-space-800/60 backdrop-blur-md border border-space-700 shadow-xl;
+  }
+  .hud-text {
+    @apply font-mono text-neon-cyan/80 tracking-wider uppercase text-xs;
+  }
+  .btn-primary {
+    @apply px-4 py-2 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/20 hover:border-neon-cyan transition-all duration-200 active:scale-95 rounded;
+  }
+}
