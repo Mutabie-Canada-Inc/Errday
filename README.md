@@ -6,6 +6,19 @@ As a startup founder, I get slammed with tasks to do everday. Theres so many dif
 
 I want to go back to the good old days of using single-use apps that don't require cloud hosting. Hosting on the cloud is great and has many benefits. But not for what I need. 
 
+# Design
+## Brain Dump
+![Brain Dump](./docs/images/Home.png)
+## Eisenhower Matrix
+![Eisenhower Matrix](./docs/images/Matrix.png)
+## Calendar
+![Calendar](./docs/images/Calendar.png)
+## Tutorial
+![Tutorial1](./docs/images/Docs1.png)
+![Tutorial2](./docs/images/Docs2.png)
+## System Info
+![System Info](./docs/images/Info.png)
+
 # Documentation
 To learn more, please find the rest of the documentation in the docs folder. The following figure shows the folder structure of what to expect.
 ```
