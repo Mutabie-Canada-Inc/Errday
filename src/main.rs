@@ -19,6 +19,7 @@ const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 
 /// THE MISSION START: This is where the application launches
 fn main() {
+    std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
     // Stage 1: Initialize logging only during development to keep the app clean
     #[cfg(debug_assertions)]
     dioxus_logger::init(tracing::Level::INFO).expect("failed to init logger");
