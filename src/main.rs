@@ -27,7 +27,7 @@ fn main() {
     let config = dioxus::desktop::Config::new()
         .with_window(
             dioxus::desktop::WindowBuilder::new()
-                .with_title("Errday // Mission Control")
+                .with_title("Errday")
                 .with_inner_size(dioxus::desktop::LogicalSize::new(1280.0, 800.0))
                 .with_min_inner_size(dioxus::desktop::LogicalSize::new(1000.0, 700.0))
         )

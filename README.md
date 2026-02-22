@@ -1,8 +1,8 @@
 # Errday
-A standalone desktop app built to visualise priority tasks for startup founders using Time Management concepts
+A standalone desktop app built to visualise priority tasks for startup founders using the Eisenhower Matrix method.
 
 # Overview
-As a startup founder, I get slammed with tasks to do everday. Theres so many different types of ways to manage your time. Pomodorro, Time Blocking, traditional TODOs list, 4 quadrent... And, theres not a lot of clear tools that can organize my thoughts in building a business. That is, without charging you or limiting core features, forcing people to sign up. 
+As a startup founder, I get slammed with tasks to do everday. Theres so many different methods to manage your time. Pomodorro, Time Blocking, traditional TODOs list, etc. And, theres not a lot of clear webapps that can organize my thoughts in building a business. That is, without charging you or limiting core features, forcing people to sign up. 
 
 I want to go back to the good old days of using single-use apps that don't require cloud hosting. Hosting on the cloud is great and has many benefits. But not for what I need. 
 
@@ -21,7 +21,6 @@ I will be using Dioxus, a Rust framework for creating cross-platform apps. Rust 
 Heres a list of everything expected to be used in this application. 
 - Rust
 - Dioxus
-- cargo
 ```
 project/
 ├─ assets/ # Any assets that are used by the app should be placed here
@@ -29,6 +28,11 @@ project/
 │  ├─ main.rs # main.rs is the entry point to your application and currently contains all components for the app
 ├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
 ```
+# Contributing
+The command below will create a desktop app. To make a web version, use `--platform web` or ios or android.
+```bash
+dx serve --platform desktop
+``` 
 
 # Credit 
 @ 2026 Mutabie Canada Inc

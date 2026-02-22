@@ -48,6 +48,37 @@ pub fn Tutorial() -> Element {
                     }
                 }
 
+                // Eisenhower Matrix Definitions Grid
+                div { class: "mt-16 mb-8",
+                    h3 { class: "text-2xl font-bold text-white mb-8 text-center font-sans tracking-tight", "Eisenhower Matrix Reference" }
+                    div { class: "grid grid-cols-2 gap-8",
+                        // Do First
+                        div { class: "glass-panel p-8 rounded-xl border-t-2 border-neon-pink bg-space-900",
+                            h4 { class: "text-lg font-bold text-neon-pink mb-3 tracking-widest", "DO FIRST" }
+                            p { class: "text-xs font-mono opacity-70 uppercase tracking-wider mb-4", "URGENT & IMPORTANT" }
+                            p { class: "text-gray-400 text-sm leading-relaxed", "Crises, deadlines, and problems. Do these NOW." }
+                        }
+                        // Schedule
+                        div { class: "glass-panel p-8 rounded-xl border-t-2 border-neon-cyan bg-space-900",
+                            h4 { class: "text-lg font-bold text-neon-cyan mb-3 tracking-widest", "SCHEDULE" }
+                            p { class: "text-xs font-mono opacity-70 uppercase tracking-wider mb-4", "IMPORTANT, NOT URGENT" }
+                            p { class: "text-gray-400 text-sm leading-relaxed", "Planning, prevention, and improvement. Schedule a time for these." }
+                        }
+                        // Delegate
+                        div { class: "glass-panel p-8 rounded-xl border-t-2 border-neon-amber bg-space-900",
+                            h4 { class: "text-lg font-bold text-neon-amber mb-3 tracking-widest", "DELEGATE" }
+                            p { class: "text-xs font-mono opacity-70 uppercase tracking-wider mb-4", "URGENT, NOT IMPORTANT" }
+                            p { class: "text-gray-400 text-sm leading-relaxed", "Interruptions, some calls/meetings. Delegate if possible." }
+                        }
+                        // Delete
+                        div { class: "glass-panel p-8 rounded-xl border-t-2 border-space-700 bg-space-900",
+                            h4 { class: "text-lg font-bold text-gray-400 mb-3 tracking-widest", "DELETE" }
+                            p { class: "text-xs font-mono opacity-70 uppercase tracking-wider mb-4", "NEITHER" }
+                            p { class: "text-gray-400 text-sm leading-relaxed", "Time wasters and busy work. Elimination is the goal." }
+                        }
+                    }
+                }
+
                 // CTA: Call to action to jump back to the main dash
                 div { class: "text-center pt-8",
                     Link { to: Route::Inbox {}, class: "btn-primary inline-flex items-center gap-2",
