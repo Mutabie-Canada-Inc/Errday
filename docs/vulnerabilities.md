@@ -39,7 +39,11 @@ All identified Dioxus/Rust vulnerabilities have been successfully mitigated. The
 The `dioxus-fullstack` and related crates may inherit vulnerabilities from underlying dependencies, such as:
 - **`bytes` Crate:** Integer overflow in `BytesMut::reserve` which can lead to out-of-bounds writes or panics.
 - **`rustls` Crate:** Panics in versions 0.23.0 to 0.23.13 when a TLS ClientHello is fragmented.
-**Mitigation/Fix:** Regularly run `cargo run` and `cargo update` to patch transitive dependencies.
+- **`glib` Crate (CVE-2024-4322+):** The `VariantStrIter::impl_get` function was unsound when passing mutable pointer arguments leading to potential NULL pointer dereferences. **Fix:** Use version `0.20.0` or higher.
+**Mitigation/Fix:** Regularly run `cargo update` to patch transitive dependencies. To upgrade the `glib` crate natively, use the following terminal command (ensure your framework dependencies support `^0.20`):
+```bash
+cargo update -p glib --precise 0.20.0
+```
 
 ---
 ## Applied Fixes

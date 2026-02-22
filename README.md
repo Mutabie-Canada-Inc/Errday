@@ -1,5 +1,6 @@
-# Errday
-A standalone desktop app built to visualise priority tasks for startup founders using the Eisenhower Matrix method.
+# Errd```bash
+dx serve
+``` app built to visualise priority tasks for startup founders using the Eisenhower Matrix method.
 
 # Overview
 As a startup founder, I get slammed with tasks to do everday. Theres so many different methods to manage your time. Pomodorro, Calendar, traditional TODOs list, etc. And, theres not a lot of clear webapps that can organize my thoughts in building a business. That is, without charging you or limiting core features, forcing people to sign up. 
