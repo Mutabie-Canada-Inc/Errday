@@ -62,13 +62,13 @@ pub fn Sidebar() -> Element {
                         div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "Matrix Protocol" }
                     }
                 }
-                // 3. Time Blocking (Calendar)
+                // 3. Calendar
                 Link { to: Route::Calendar {}, class: "block p-3 rounded hover:bg-space-800 text-gray-400 hover:text-white transition-colors flex {align_items} gap-3 group relative",
                     active_class: "bg-space-800 text-neon-green border-l-2 border-neon-green",
                      span { class: "w-1.5 h-1.5 rounded-full bg-current opacity-50 group-hover:opacity-100 transition-opacity" }
-                     span { class: "{text_visibility} whitespace-nowrap", "Time Blocking" }
+                     span { class: "{text_visibility} whitespace-nowrap", "Calendar" }
                      if is_collapsed() {
-                        div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "Time Blocking" }
+                        div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "Calendar" }
                     }
                 }
             }
@@ -84,9 +84,9 @@ pub fn Sidebar() -> Element {
                 }
                 Link { to: Route::Credits {}, class: "block p-3 rounded hover:bg-space-800 text-gray-500 hover:text-white transition-colors text-sm flex {align_items} gap-3 group relative",
                     active_class: "text-white",
-                    if is_collapsed() {  span { class: "text-xs", "i" } } else { "System Info" }
+                    if is_collapsed() {  span { class: "text-xs", "i" } } else { "Credits" }
                      if is_collapsed() {
-                        div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "System Info" }
+                        div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "Credits" }
                     }
                 }
             }

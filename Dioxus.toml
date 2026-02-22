@@ -13,7 +13,7 @@ publisher = "Mutabie Canada Inc."
 icon = ["assets/icon.png"]
 category = "Productivity"
 copyright = "© 2026 Mutabie Canada Inc."
-description = "A minimalist task manager using Eisenhower Matrix and Time Blocking."
+description = "A minimalist task manager using Eisenhower Matrix and Calendar."
 # Include the assets folder in the final bundle
 resources = ["assets"]
 

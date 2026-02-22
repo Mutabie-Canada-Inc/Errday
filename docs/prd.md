@@ -5,7 +5,7 @@
 **Tagline:** Mission Control for Founders
 **Version:** 1.0 (MVP)
 
-**Errday** is a standalone, offline-first desktop application designed for startup founders and busy professionals. It combines the strategic clarity of the **Eisenhower Matrix** with the tactical execution of **Time Blocking**. 
+**Errday** is a standalone, offline-first desktop application designed for startup founders and busy professionals. It combines the strategic clarity of the **Eisenhower Matrix** with the tactical execution of a **Calendar**.
 
 Built with **Rust** and **Dioxus**, Errday prioritizes performance, privacy, and simplicity. It operates entirely locally without cloud dependencies, ensuring data ownership and lightning-fast operation.
 
@@ -45,7 +45,7 @@ Built with **Rust** and **Dioxus**, Errday prioritizes performance, privacy, and
 The application follows a strict 3-step productivity funnel:
 1.  **Capture (Brain Dump):** Get everything out of your head.
 2.  **Process (Eisenhower Matrix):** Decisions on what to do, defer, delegate, or delete.
-3.  **Execute (Time Blocking):** Schedule the "Do" tasks into reality. Ordered by Urgency and Importance down to no Urgency and no Importance.
+3.  **Execute (Calendar):** Schedule the "Do" tasks into reality. Ordered by Urgency and Importance down to no Urgency and no Importance.
 
 ### 4.2. Feature Specifications
 
@@ -64,7 +64,7 @@ The application follows a strict 3-step productivity funnel:
     4.  **Delete** (Less Urgent & Less Important)
 - **Action:** Users drag "Unsorted" tasks into one of these quadrants.
 
-#### III. Time Blocking (The "Flight Plan")
+#### III. Calendar (The "Flight Plan")
 - **Goal:** Assign actual time slots to "Do First" and "Schedule" tasks.
 - **Interface:**
     - **Weekly View:** 7-column layout (Mon-Sun).

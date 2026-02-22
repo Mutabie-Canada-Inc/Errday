@@ -8,7 +8,7 @@ pub fn Credits() -> Element {
             div { class: "max-w-3xl mx-auto space-y-12 text-center",
                 // PAGE HEADER: Identity check
                 div { class: "border-b border-gray-800 pb-8",
-                    h2 { class: "text-4xl font-bold mb-2 text-white font-sans tracking-tight", "System Info" }
+                    h2 { class: "text-4xl font-bold mb-2 text-white font-sans tracking-tight", "Credits" }
                     p { class: "text-gray-400 font-mono text-sm", "An Overview of the App's verison and details" }
                 }
 

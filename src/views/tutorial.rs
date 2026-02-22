@@ -40,7 +40,7 @@ pub fn Tutorial() -> Element {
                     div { class: "glass-panel p-8 rounded-xl border-l-4 border-neon-green flex gap-6",
                         div { class: "text-4xl font-mono text-neon-green/50 font-bold", "03" }
                         div {
-                            h3 { class: "text-xl font-bold text-white mb-2", "Time Blocking" }
+                            h3 { class: "text-xl font-bold text-white mb-2", "Calendar" }
                             p { class: "text-gray-400 leading-relaxed",
                                 "Finally, go to the 'Calendar' tab. Drag your prioritized tasks onto specific days to create a realistic flight plan for your week."
                             }

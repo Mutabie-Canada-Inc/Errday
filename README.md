@@ -2,7 +2,7 @@
 A standalone desktop app built to visualise priority tasks for startup founders using the Eisenhower Matrix method.
 
 # Overview
-As a startup founder, I get slammed with tasks to do everday. Theres so many different methods to manage your time. Pomodorro, Time Blocking, traditional TODOs list, etc. And, theres not a lot of clear webapps that can organize my thoughts in building a business. That is, without charging you or limiting core features, forcing people to sign up. 
+As a startup founder, I get slammed with tasks to do everday. Theres so many different methods to manage your time. Pomodorro, Calendar, traditional TODOs list, etc. And, theres not a lot of clear webapps that can organize my thoughts in building a business. That is, without charging you or limiting core features, forcing people to sign up. 
 
 I want to go back to the good old days of using single-use apps that don't require cloud hosting. Hosting on the cloud is great and has many benefits. But not for what I need. 
 
