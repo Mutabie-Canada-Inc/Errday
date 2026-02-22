@@ -32,3 +32,30 @@ To run for a different platform, use the `--platform platform` flag. E.g.
 ```bash
 dx serve --platform desktop
 ```
+
+## Bundling your App
+The term "bundling" means to package your app into a distributable format. The command below will create a desktop app for macOS. This is what makes apps "production-ready".
+### macOS (Apple Silicon)
+```bash
+dx bundle --platform desktop \
+    --target aarch64-apple-darwin \
+    --package-types "macos" \
+    --package-types "dmg"
+```
+
+### macOS (Intel)
+```bash
+dx bundle --platform desktop \
+    --target x86_64-apple-darwin \
+    --package-types "macos" \
+    --package-types "dmg"
+```
+
+### Linux (Debian)
+```bash
+dx bundle --platform desktop \
+    --target x86_64-unknown-linux-gnu \
+    --package-types "deb" \
+    --package-types "appimage" \
+    --package-types "rpm"
+```
