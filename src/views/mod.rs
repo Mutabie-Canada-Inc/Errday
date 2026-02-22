@@ -1,7 +1,7 @@
 /// VIEWS MODULE: This connects all our individual page files
 pub mod inbox;    // Brain Dump page
 pub mod matrix;   // Eisenhower Matrix page
-pub mod calendar; // Flight Plan page
+pub mod calendar; // Time Blocking page
 pub mod credits;  // System Info page
 pub mod tutorial; // Flight Manual page
 

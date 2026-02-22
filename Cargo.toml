@@ -1,6 +1,6 @@
 [package]
 name = "errday"
-version = "1.0.3"
+version = "1.2.4"
 authors = ["Mutabie Canada Inc <info@mutabie.ca>"]
 edition = "2021"
 
@@ -15,6 +15,8 @@ uuid = { version = "1.10", features = ["serde", "v4"] }
 directories = "5.0"
 dioxus-logger = "0.5"
 tracing = "0.1.44"
+icalendar = "0.17.6"
+rfd = "0.17.2"
 
 [features]
 default = ["desktop"]
