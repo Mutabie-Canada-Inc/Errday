@@ -403,9 +403,9 @@ fn DayTaskBlocks(
                             value: "{title}",
                             autofocus: true,
                             onkeydown: move |e| {
-                                if e.key() == dioxus::prelude::Key::Enter {
+                                if e.key() == dioxus::events::Key::Enter {
                                     editing_task_id.set(None);
-                                } else if e.key() == dioxus::prelude::Key::Escape {
+                                } else if e.key() == dioxus::events::Key::Escape {
                                     editing_task_id.set(None);
                                 }
                             },
