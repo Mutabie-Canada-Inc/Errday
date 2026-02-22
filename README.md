@@ -6,6 +6,13 @@ As a startup founder, I get slammed with tasks to do everday. Theres so many dif
 
 I want to go back to the good old days of using single-use apps that don't require cloud hosting. Hosting on the cloud is great and has many benefits. But not for what I need. 
 
+# System Requirements
+| Platform | Min. OS Version | Architecture | Approx. Storage | Additional Dependencies |
+| :--- | :--- | :--- | :--- | :--- |
+| **macOS** | 10.15 (Catalina) or later | Apple Silicon (M1+) or Intel x86_64 | ~15 MB | None |
+| **Linux (Mint / .deb)** | Linux Mint 20+ / Ubuntu 20.04+ | x86_64 / ARM64 | ~12 MB | `libwebkit2gtk-4.0-37` |
+| **Windows** | *Coming Soon* | *Coming Soon* | *Coming Soon* | *Coming Soon* |
+
 # Design
 ## Brain Dump
 ![Brain Dump](./docs/images/Home.png)
@@ -41,11 +48,8 @@ project/
 │  ├─ main.rs # main.rs is the entry point to your application and currently contains all components for the app
 ├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
 ```
-# Contributing
-The command below will create a desktop app. To make a web version, use `--platform web` or ios or android.
-```bash
-dx serve --platform desktop
-``` 
 
-# Credit 
+# Credits
 @ 2026 Mutabie Canada Inc
+Website: [Mutabie Canada Inc](https://mutabie.ca)
+Email: [info@mutabie.ca](mailto:info@mutabie.ca)
