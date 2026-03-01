@@ -33,7 +33,7 @@ pub fn Matrix() -> Element {
             }
 
             // THE MATRIX GRID: A 2x2 grid representing the core prioritization logic
-            div { class: "flex-1 p-12 grid grid-cols-2 grid-rows-2 gap-10",
+            div { class: "flex-1 py-10 px-8 grid grid-cols-2 grid-rows-2 gap-3",
                 // Top-Left: Do First (Urgent & Important)
                 QuadrantBox { 
                     title: "DO FIRST", 
@@ -97,8 +97,7 @@ fn QuadrantBox(
     let container_class = if is_backlog.unwrap_or(false) {
         format!("flex flex-col h-full transition-colors {}", drop_target_class)
     } else {
-        // Added hover:z-50 to bring the whole box to front when interacting (helps bubbles overlap neighbors)
-        format!("glass-panel rounded-xl px-6 py-6 flex flex-col h-full border-2 transition-all duration-300 hover:bg-space-800/80 hover:shadow-2xl hover:z-50 relative overflow-visible {} {}", color, drop_target_class)
+        format!("bg-[#101423] rounded-2xl p-8 flex flex-col h-full border-2 transition-all duration-300 relative overflow-visible shadow-sm {} {}", color, drop_target_class)
     };
 
     rsx! {
@@ -130,11 +129,11 @@ fn QuadrantBox(
             
             // Render the header (Only for the four matrix quadrants)
             if !is_backlog.unwrap_or(false) {
-                div { class: "flex justify-between items-start mb-6 border-b border-white/5 pb-4 relative z-20",
+                div { class: "flex justify-between items-start mb-6 border-b border-white pb-3 relative z-20",
                     div {
-                        h3 { class: "text-2xl font-bold tracking-widest leading-none mb-1", "{title}" }
+                        h3 { class: "text-2xl font-bold tracking-widest leading-none mb-1 text-current", "{title}" }
                         if let Some(sub) = subtitle {
-                            p { class: "text-xs font-mono opacity-70 uppercase tracking-wider", "{sub}" }
+                            p { class: "text-[10px] font-mono tracking-widest uppercase text-current", "{sub}" }
                         }
                     }
                 }
@@ -143,14 +142,14 @@ fn QuadrantBox(
             // List the tasks inside this section
             div { class: "flex-1 overflow-y-auto space-y-4 min-h-0 z-10 pr-2 scrollbar-thin scrollbar-thumb-space-600 scrollbar-track-transparent hover:scrollbar-thumb-space-500",
                 if tasks.is_empty() {
-                    div { class: "h-full flex items-center justify-center text-gray-700 text-sm font-mono italic",
+                    div { class: "h-full flex items-center justify-center text-gray-400 text-[11px] font-mono tracking-widest",
                         "Empty Sector"
                     }
                 }
                 for task in tasks {
                     div {
                         key: "{task.id.to_string()}",
-                        class: "bg-space-900 border border-space-700 p-5 rounded-lg group cursor-move hover:border-current transition-all shadow-sm relative hover:translate-x-1",
+                        class: "bg-[#101423] border border-space-700 p-4 rounded-lg group cursor-move hover:border-current transition-all relative hover:translate-x-1",
                         draggable: true,
                         // Update the global 'dragging' signal when the user picks up this task
                         ondragstart: move |_| {
@@ -159,7 +158,7 @@ fn QuadrantBox(
                         },
                         
                         div { class: "flex justify-between items-start gap-3",
-                            span { class: "text-sm font-medium text-gray-200 leading-snug", "{task.title}" }
+                            span { class: "text-sm font-medium text-current leading-relaxed", "{task.title}" }
                             div { class: "opacity-0 group-hover:opacity-100 transition-opacity",
                                 button { 
                                     class: "text-gray-500 hover:text-red-500 w-5 h-5 flex items-center justify-center rounded hover:bg-space-800 transition-colors",
