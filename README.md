@@ -1,6 +1,5 @@
-# Errd```bash
-dx serve
-``` app built to visualise priority tasks for startup founders using the Eisenhower Matrix method.
+# Errday
+A standalone desktop app built to visualise priority tasks for startup founders using the Eisenhower Matrix method.
 
 # Overview
 As a startup founder, I get slammed with tasks to do everday. Theres so many different methods to manage your time. Pomodorro, Calendar, traditional TODOs list, etc. And, theres not a lot of clear webapps that can organize my thoughts in building a business. That is, without charging you or limiting core features, forcing people to sign up. 
@@ -10,8 +9,8 @@ I want to go back to the good old days of using single-use apps that don't requi
 # System Requirements
 | Platform | Min. OS Version | Architecture | Approx. Storage | Additional Dependencies |
 | :--- | :--- | :--- | :--- | :--- |
-| **macOS** | 10.15 (Catalina) or later | Apple Silicon (M1+) or Intel x86_64 | ~15 MB | None |
-| **Linux (Mint / .deb)** | Linux Mint 20+ / Ubuntu 20.04+ | x86_64 / ARM64 | ~12 MB | `libwebkit2gtk-4.0-37` |
+| **macOS** | 10.15 (Catalina) or later | Apple Silicon (M1+) or Intel x86_64 | ~5 MB | None |
+| **Linux (Mint / .deb)** | Linux Mint 20+ / Ubuntu 20.04+ | x86_64 / ARM64 | ~5 MB | `libwebkit2gtk-4.0-37` |
 | **Windows** | *Coming Soon* | *Coming Soon* | *Coming Soon* | *Coming Soon* |
 
 # Design
