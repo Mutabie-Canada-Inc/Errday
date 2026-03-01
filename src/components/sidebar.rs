@@ -8,7 +8,7 @@ pub fn Sidebar() -> Element {
     let mut is_collapsed = use_signal(|| false);
 
     // Calculate styling based on whether we are collapsed or expanded
-    let nav_width = if is_collapsed() { "w-20" } else { "w-64" };
+    let nav_width = if is_collapsed() { "w-20" } else { "w-52" };
     let text_visibility = if is_collapsed() { "hidden" } else { "block" };
     let align_items = if is_collapsed() { "items-center justify-center" } else { "items-center" };
     let px = if is_collapsed() { "px-2" } else { "px-4" };

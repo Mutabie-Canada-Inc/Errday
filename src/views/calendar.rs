@@ -190,7 +190,7 @@ pub fn Calendar() -> Element {
                         div { class: "w-14 shrink-0 border-r border-space-700/30 relative bg-space-900/80 z-20",
                             for hour in 0..24 {
                                 div {
-                                    class: "absolute right-2 text-[10px] font-mono text-gray-500 leading-none",
+                                    class: "absolute -right-1 z-30 text-[14px] font-mono font-bold text-white leading-none bg-space-900 px-1",
                                     style: "top: {hour * HOUR_HEIGHT_PX}px; transform: translateY(-50%);",
                                     if hour == 0 { "" } else {
                                         "{hour:02}:00"
@@ -399,7 +399,7 @@ fn DayTaskBlocks(
                     // Title rendering (normal vs inline input edit)
                     if editing_task_id() == Some(task_id) {
                         input {
-                            class: "w-full bg-black/40 text-white text-[11px] font-semibold px-1 py-0.5 rounded border border-white/30 focus:outline-none focus:border-neon-cyan",
+                            class: "w-full bg-black/40 text-white text-[20px] font-semibold px-1 py-0.5 rounded border border-white/30 focus:outline-none focus:border-neon-cyan",
                             value: "{title}",
                             autofocus: true,
                             onkeydown: move |e| {
