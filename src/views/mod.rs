@@ -1,5 +1,5 @@
 /// VIEWS MODULE: This connects all our individual page files
-pub mod inbox;    // Brain Dump page
+pub mod inbox;    // Brainstorm page
 pub mod matrix;   // Eisenhower Matrix page
 pub mod calendar; // Calendar page
 pub mod credits;  // System Info page

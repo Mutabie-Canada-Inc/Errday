@@ -14,13 +14,13 @@ pub fn Tutorial() -> Element {
                 }
 
                 div { class: "grid gap-8",
-                    // Stage 1: The 'Brain Dump' phase
+                    // Stage 1: The 'Brainstorm' phase
                     div { class: "glass-panel p-8 rounded-xl border-l-4 border-neon-cyan flex gap-6",
                         div { class: "text-4xl font-mono text-neon-cyan/50 font-bold", "01" }
                         div {
-                            h3 { class: "text-xl font-bold text-white mb-2", "Brain Dump" }
+                            h3 { class: "text-xl font-bold text-white mb-2", "Brainstorm" }
                             p { class: "text-gray-400 leading-relaxed",
-                                "Start by capturing everything on your mind in the 'Brain Dump' tab. Don't worry about sorting or organizing yet. Just get it all out of your head."
+                                "Start by capturing everything on your mind in the 'Brainstorm' tab. Don't worry about sorting or organizing yet. Just get it all out of your head."
                             }
                         }
                     }

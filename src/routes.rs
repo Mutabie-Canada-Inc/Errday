@@ -18,7 +18,7 @@ pub enum Route {
         
         #[route("/credits")] // About the creators
         Credits {},
-        
+           
         #[route("/tutorial")] // How to use the app
         Tutorial {},
     #[end_layout]

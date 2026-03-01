@@ -69,12 +69,12 @@ pub fn Calendar() -> Element {
                 // Sidebar header
                 div { class: "p-4 border-b border-space-700/40 flex justify-between items-center",
                     div {
-                        h2 { class: "text-sm font-bold text-white tracking-wide", "Unscheduled" }
-                        p { class: "text-[10px] text-gray-500 font-mono mt-0.5 uppercase tracking-widest", "Drag to schedule" }
+                        h2 { class: "text-lg font-bold text-white tracking-tight", "Unscheduled" }
+                        p { class: "text-xs font-mono text-neon-cyan/80 tracking-widest", "Drag to schedule" }
                     }
                     // ICS Export Button
                     button {
-                        class: "p-2 rounded-lg hover:bg-space-700/60 text-gray-400 hover:text-neon-cyan transition-all duration-200",
+                        class: "p-2 mb-6 rounded-lg hover:bg-space-700/60 text-gray-400 hover:text-neon-cyan transition-all duration-200",
                         title: "Export Calendar (.ics)",
                         onclick: move |_| {
                             let tasks = scheduled.clone();
@@ -101,9 +101,8 @@ pub fn Calendar() -> Element {
                                     key: "{task.id}",
                                     draggable: true,
                                     ondragstart: move |_| dragged_task_id.set(Some(task.id)),
-                                    class: "bg-space-900/60 px-3 py-2.5 rounded-lg border border-space-700/50 cursor-grab hover:border-white/15 transition-all duration-200 group active:cursor-grabbing",
-                                    div { class: "flex items-start justify-between gap-2",
-                                        span { class: "text-[13px] font-medium text-gray-200 leading-snug group-hover:text-white transition-colors", "{task.title}" }
+                                    class: "bg-space-900/60 py-5 px-5 rounded-lg border border-space-700/50 cursor-grab hover:border-white/15 transition-all duration-200 group active:cursor-grabbing",
+                                    div { class: "flex flex-col items-start m-auto w-fit gap-1",
                                         span { class: "shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded {badge_color}",
                                             match task.quadrant {
                                                 Quadrant::DoFirst => "DO",
@@ -111,6 +110,7 @@ pub fn Calendar() -> Element {
                                                 _ => ""
                                             }
                                         }
+                                        span { class: "text-[13px] font-medium pt-5 text-gray-200 leading-snug group-hover:text-white transition-colors", "{task.title}" }
                                     }
                                 }
                             }
@@ -381,8 +381,9 @@ fn DayTaskBlocks(
                 key: "{task_id}",
                 // ── SECTION: Task Block Container ────────────────
                 // z-20 so drop zones (z-10 idle / z-30 active) can layer correctly
-                class: "absolute left-1 right-2 rounded-md z-20 group/block transition-shadow duration-200 hover:shadow-lg border-l-[3px] outline outline-1 outline-white/10 {block_border} {block_bg} {block_pointer}",
+                class: "absolute inset-x-0 mx-1 rounded-md z-20 group/block transition-shadow duration-200 hover:shadow-lg border-l-[3px] outline outline-1 outline-white/10 {block_border} {block_bg} {block_pointer}",
                 style: "top: {top_px}px; height: {height_px}px;",
+                title: "{title}",
                 draggable: if editing_task_id() != Some(task_id) { "true" } else { "false" },
                 ondragstart: move |_| {
                     if editing_task_id() != Some(task_id) {
@@ -395,7 +396,7 @@ fn DayTaskBlocks(
                 },
 
                 // Content
-                div { class: "px-2 py-1 h-full flex flex-col overflow-hidden",
+                div { class: "px-2 py-1 h-full flex flex-col overflow-hidden min-w-0",
                     // Title rendering (normal vs inline input edit)
                     if editing_task_id() == Some(task_id) {
                         input {
@@ -425,7 +426,8 @@ fn DayTaskBlocks(
                         }
                     } else {
                         div { 
-                            class: "text-[11px] font-semibold text-white leading-tight truncate cursor-grab active:cursor-grabbing", 
+                            class: "text-[11px] font-semibold text-white leading-tight overflow-hidden text-ellipsis whitespace-nowrap min-w-0 pr-1 cursor-grab active:cursor-grabbing", 
+                            title: "{title}",
                             "{title}" 
                         }
                     }
@@ -479,11 +481,11 @@ fn quadrant_badge_color(q: &Quadrant) -> &'static str {
 /// Returns (background class, border-left class) for calendar task blocks.
 fn quadrant_block_colors(q: &Quadrant) -> (&'static str, &'static str) {
     match q {
-        Quadrant::DoFirst => ("bg-neon-pink/20 hover:bg-neon-pink/30", "border-neon-pink"),
-        Quadrant::Schedule => ("bg-neon-cyan/20 hover:bg-neon-cyan/30", "border-neon-cyan"),
-        Quadrant::Delegate => ("bg-neon-amber/20 hover:bg-neon-amber/30", "border-neon-amber"),
-        Quadrant::Delete => ("bg-gray-500/20 hover:bg-gray-500/30", "border-gray-500"),
-        Quadrant::Unsorted => ("bg-gray-500/20 hover:bg-gray-500/30", "border-gray-500"),
+        Quadrant::DoFirst => ("bg-pink-950/80 hover:bg-pink-900/90", "border-neon-pink"),
+        Quadrant::Schedule => ("bg-cyan-950/80 hover:bg-cyan-900/90", "border-neon-cyan"),
+        Quadrant::Delegate => ("bg-amber-950/80 hover:bg-amber-900/90", "border-neon-amber"),
+        Quadrant::Delete => ("bg-space-800 hover:bg-space-700", "border-gray-500"),
+        Quadrant::Unsorted => ("bg-space-800 hover:bg-space-700", "border-gray-500"),
     }
 }
 

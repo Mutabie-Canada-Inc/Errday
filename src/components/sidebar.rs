@@ -44,13 +44,13 @@ pub fn Sidebar() -> Element {
 
             // PRIMARY NAVIGATION: Links to the main dashboards
             div { class: "flex-1 {px} space-y-2",
-                // 1. Brain Dump (Inbox)
+                // 1. Brainstorm (Inbox)
                 Link { to: Route::Inbox {}, class: "block p-3 rounded hover:bg-space-800 text-gray-400 hover:text-white transition-colors flex {align_items} gap-3 group relative",
                     active_class: "bg-space-800 text-neon-cyan border-l-2 border-neon-cyan",
                     span { class: "w-1.5 h-1.5 rounded-full bg-current opacity-50 group-hover:opacity-100 transition-opacity" }
-                    span { class: "{text_visibility} whitespace-nowrap", "Brain Dump" }
+                    span { class: "{text_visibility} whitespace-nowrap", "Brainstorm" }
                     if is_collapsed() {
-                        div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "Brain Dump" }
+                        div { class: "absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-space-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-space-700 z-50", "Brainstorm" }
                     }
                 }
                 // 2. Eisenhower Matrix

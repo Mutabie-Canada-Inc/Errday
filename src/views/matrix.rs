@@ -16,7 +16,7 @@ pub fn Matrix() -> Element {
                 div { class: "mb-6 pb-6 border-b border-space-800 flex justify-between items-center group",
                     div {
                         h2 { class: "text-lg font-bold text-white tracking-tight", "Backlog" }
-                        p { class: "text-xs text-gray-500 font-mono", "UNSORTED MINDS" }
+                        p { class: "text-xs font-mono text-neon-cyan/80 tracking-widest", "UNSORTED MINDS" }
                     }
                 }
                 

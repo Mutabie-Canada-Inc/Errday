@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use crate::store::AppState;
 
-/// INBOX VIEW: The "Brain Dump" where users capture new tasks before sorting them
+/// INBOX VIEW: The "Brainstorm" where users capture new tasks before sorting them
 #[component]
 pub fn Inbox() -> Element {
     // Access the global state (The Brain) and set up local state for the input field
